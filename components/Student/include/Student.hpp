@@ -11,6 +11,7 @@ class Student
   public:
   std::string m_name;
   Student ();
+  Student (std::string _name);
   ~Student ();
   void print_name ();
 };

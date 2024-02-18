@@ -14,18 +14,11 @@ extern "C" {
 void app_main (void)
 {
   std::cout << "Program starts" << std::endl;
-  Student* student_1 = new Student;
-  delete student_1;
+  DELAY_SECONDS (COMMON_DATA_SECOND * 2);
+  Student student_1 ("mike");
+  student_1.print_name ();
+  DELAY_SECONDS (COMMON_DATA_SECOND * 2);
   std::cout << "Program ends" << std::endl;
-
-
-  Student student_2;
-  student_2.m_name = "Danilo";
-  student_2.print_name ();
-
-  Student student_3;
-  student_3.m_name = "Susan";
-  student_3.print_name ();
 }
 
 
