@@ -5,7 +5,7 @@
 #include <driver/gpio.h>
 
 #include "common_data.h"
-#include "Student.hpp"
+#include "Array.hpp"
 
 extern "C" {
   void app_main (void);
@@ -13,12 +13,19 @@ extern "C" {
 
 void app_main (void)
 {
-  std::cout << "Program starts" << std::endl;
-  DELAY_SECONDS (COMMON_DATA_SECOND * 2);
-  Student student_1 ("mike");
-  student_1.print_name ();
-  DELAY_SECONDS (COMMON_DATA_SECOND * 2);
-  std::cout << "Program ends" << std::endl;
+  Array my_array;
+  Array my_array_3 = my_array; // Copy constructor
+
+  my_array.set_data (0, 10000);
+  my_array.set_data (1, 99);
+  my_array.set_data (2, 77);
+
+  Array my_array_2;
+  my_array_2 = my_array; // Copy assignment operator
+
+  my_array.print_data ();
+  print_newln ();
+  my_array_2.print_data ();
 }
 
 

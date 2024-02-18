@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdio.h>
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -21,6 +22,8 @@ extern "C" {
 
 #define ON true
 #define OFF false
+
+  void print_newln (void);
 
 #ifdef __cplusplus
 }
