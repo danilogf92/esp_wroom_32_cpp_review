@@ -11,21 +11,29 @@ extern "C" {
   void app_main (void);
 }
 
+// Creates copies of the array for further processing, avoid this
+void print_an_array (Array arr)
+{
+  //arr.print_data ();
+}
+
 void app_main (void)
 {
+  // Intialize all of our data up front
   Array my_array;
-  Array my_array_3 = my_array; // Copy constructor
 
-  my_array.set_data (0, 10000);
-  my_array.set_data (1, 99);
-  my_array.set_data (2, 77);
+  my_array.set_data (0, 1234567);
 
-  Array my_array_2;
-  my_array_2 = my_array; // Copy assignment operator
+  // Copy Constructor is called
+  //Array my_array_2 = my_array;    // Avoid this copy, program does not compile with this code
+
 
   my_array.print_data ();
   print_newln ();
-  my_array_2.print_data ();
+  //my_array_2.print_data ();
+
+  //print_an_array (my_array); // Avoid this copy, program does not compile with this code
+
 }
 
 

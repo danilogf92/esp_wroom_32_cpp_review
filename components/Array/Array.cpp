@@ -3,10 +3,9 @@
 Array::Array ()
 {
   std::cout << "Constructor" << std::endl;
-  data = new int[10];
-  for ( int i = 0; i < 10; i++ )
+  for ( int i = 0; i < 1; i++ )
   {
-    data[i] = i * i;
+    data.push_back (i);
   }
 }
 
@@ -14,10 +13,9 @@ Array::Array ()
 Array::Array (const Array& before)
 {
   std::cout << "Copy Constructor" << std::endl;
-  data = new int[10];
-  for ( int i = 0; i < 10; i++ )
+  for ( int i = 0; i < before.data.size (); i++ )
   {
-    data[i] = before.data[i];
+    data.push_back (before.data[i]);
   }
 }
 
@@ -31,24 +29,21 @@ Array& Array::operator = (const Array& arr)
     return *this;
   }
 
-  delete[] data;
-  data = new int[10];
-  for ( int i = 0; i < 10; i++ )
+  data.clear ();
+  for ( int i = 0; i < arr.data.size (); i++ )
   {
-    data[i] = arr.data[i];
+    data.push_back (arr.data[i]);
   }
 
   return *this;
 };
 
 Array::~Array ()
-{
-  delete[] data;
-}
+{}
 
 void Array::print_data (void)
 {
-  for ( int i = 0; i < 10; i++ )
+  for ( int i = 0; i < data.size (); i++ )
   {
     std::cout << data[i] << std::endl;
   }
