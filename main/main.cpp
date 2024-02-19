@@ -1,40 +1,53 @@
 #include <iostream>
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include <driver/gpio.h>
-
 #include "common_data.h"
-#include "Array.hpp"
+#include "Vector3f.hpp"
 
 extern "C" {
   void app_main (void);
 }
 
-// Creates copies of the array for further processing, avoid this
-void print_an_array (Array arr)
+std::ostream& operator<<(std::ostream& os, const Vector3f& obj)
 {
-  //arr.print_data ();
+  os << obj.x << "," << obj.y << "," << obj.z;
+  return os;
 }
+
+bool operator==(const Vector3f& lhs, const Vector3f& rhs)
+{
+  std::cout << "Free function" << std::endl;
+  return ( lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z );
+}
+
 
 void app_main (void)
 {
-  // Intialize all of our data up front
-  Array my_array;
+  Vector3f my_vector;
+  my_vector.x = 0.9999999f;
+  my_vector.y = 0.9999999f;
+  my_vector.z = 0.9999999f;
+  Vector3f my_vector_2;
+  my_vector_2.x = 1.f;
+  my_vector_2.y = 1.f;
+  my_vector_2.z = 1.f;
 
-  my_array.set_data (0, 1234567);
+  if ( my_vector == my_vector_2 )
+  {
+    std::cout << "Vectors are equal" << std::endl;
+  }
+  else
+  {
+    std::cout << "Vectors are not equal" << std::endl;
+  }
 
-  // Copy Constructor is called
-  //Array my_array_2 = my_array;    // Avoid this copy, program does not compile with this code
+  my_vector = my_vector + my_vector_2;
 
+  ++my_vector;
 
-  my_array.print_data ();
-  print_newln ();
-  //my_array_2.print_data ();
-
-  //print_an_array (my_array); // Avoid this copy, program does not compile with this code
-
+  std::cout << my_vector << std::endl;
 }
+
+
 
 
 
