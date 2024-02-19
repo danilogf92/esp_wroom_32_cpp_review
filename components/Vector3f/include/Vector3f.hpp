@@ -1,11 +1,10 @@
 #ifndef VECTOR3F_HPP
 #define VECTOR3F_HPP
 
-class Vector3f
+struct Vector3f
 {
-  public:
+  // at x, y, z;
   Vector3f ();
-  ~Vector3f ();
   float x, y, z;
 };
 #endif

@@ -1,6 +1,5 @@
 #include <iostream>
 
-#include "common_data.h"
 #include "Vector3f.hpp"
 
 extern "C" {
@@ -16,6 +15,7 @@ std::ostream& operator<<(std::ostream& os, const Vector3f& obj)
 void app_main (void)
 {
   Vector3f my_vector;
+  my_vector.x = 75.3;
 
   std::cout << my_vector << std::endl;
 }
